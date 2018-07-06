@@ -79,7 +79,7 @@ const i18n = (arg) => {
     // return result
 }
 
-export const datecounter = (arg) => {
+const datecounter = (arg) => {
     const { date_, countDay_, i18n_ } = arg
 
     let countDay = countDay_ ? countDay_ : 7 // Countdown days
@@ -123,3 +123,5 @@ export const datecounter = (arg) => {
     result_.lang = i18n_ ? i18n_ : 'zh'
     return i18n(result_)
 }
+
+export default datecounter

@@ -1,11 +1,14 @@
 {
   "name": "datecounter",
-  "version": "1.0.6",
+  "version": "1.0.63",
   "description": "format date for article or news",
-  "repository":"https://github.com/hjdtl/dateCounter",
   "main": "dateCounter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjdtl/dateCounter.git"
   },
   "keywords": [
     "format",
@@ -16,5 +19,9 @@
     "news"
   ],
   "author": "hjdtl",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjdtl/dateCounter/issues"
+  },
+  "homepage": "https://github.com/hjdtl/dateCounter#readme"
 }
