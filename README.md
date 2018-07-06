@@ -5,13 +5,12 @@ Format date for article or news
 
 ### parameter
 datecounter receive an **object parameter** :
+
 | key | default | describe | required |
 | - | :-: | :- | :-: |
 | date_ | none| Expected is Date Object or timestamp | yes |
 | countDay_ | 7 | Countdown days | no |
 | i18n_ | 'zh' | Language | no |
-
-
 
 ```javascript
 import datecounter from 'datecounter'
