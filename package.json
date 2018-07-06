@@ -1,0 +1,19 @@
+{
+  "name": "datecounter",
+  "version": "1.0.5",
+  "description": "format date for article or news",
+  "main": "dateCounter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "format",
+    "date",
+    "time",
+    "timestamp",
+    "article",
+    "news"
+  ],
+  "author": "hjdtl",
+  "license": "ISC"
+}
