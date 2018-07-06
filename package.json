@@ -1,7 +1,8 @@
 {
   "name": "datecounter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "format date for article or news",
+  "repository":"https://github.com/hjdtl/dateCounter",
   "main": "dateCounter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,9 +1,9 @@
 const formatMinute = minute => {
     return minute < 10 ? ('0' + minute) : minute
 }
-function template (){
+function template() {
     const zh = {
-        t1: (year ? year + year_ : '') + month + month_ + date + date_ +' '+ hour + ':' + formatMinute(minute),
+        t1: (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
         t2: day + days_ + hour + hoursAgo_,
         t3: minute + minutesAgo_,
         t4: hour + hours_ + minute + minutesAgo_,
@@ -13,13 +13,13 @@ function template (){
         t2: `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`,
         t3: `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`,
         t4: `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
-    } 
+    }
 }
 const i18n = (arg) => {
     const { type, lang } = arg
     // todo i18n
     const langList = ['zh', 'en', 'jp', 'ru', 'kr', 'fr', 'vi']
-    const language = ({
+    const language = {
         zh: {
             year_: '年',
             month_: '月',
@@ -38,30 +38,45 @@ const i18n = (arg) => {
             hoursAgo_: ['hour ago', 'hours ago'],
             minutesAgo_: ['minute ago', 'minutes ago'],
         }
-    })[lang]
-    let result = ''
+    }[lang]
+    let result = '', zh = '', en = ''
     if (type === 4) {
         const { year, month, date, hour, minute } = arg
         const { year_, month_, date_ } = language
         result = (year ? year + year_ : '') + month + month_ + date + date_ + hour + ':' + minute
-        let zh = (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
+        zh = (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
+            en = `${month_[month - 1]} ${date}, ${year ? year + ' ' : ''}${hour}:${formatMinute(minute)}`
     }
     if (type === 3) {
         const { day, hour } = arg
         const { days_, hoursAgo_ } = language
         result = day + days_ + hour + hoursAgo_
+        zh = day + days_ + hour + hoursAgo_,
+            en = `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`
     }
     if (type === 2) {
         const { minute } = arg
         const { minutesAgo_ } = language
         result = minute + minutesAgo_
+        zh = minute + minutesAgo_,
+            en = `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
     }
     if (type === 1) {
         const { hour, minute } = arg
         const { hours_, minutesAgo_ } = language
         result = hour + hours_ + minute + minutesAgo_
+        zh = hour + hours_ + minute + minutesAgo_,
+            en = `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
     }
-    return result
+
+    switch (lang) {
+        case 'zh': return zh
+            break;
+        case 'en': return en
+            break;
+        default: return zh
+    }
+    // return result
 }
 
 export const datecounter = (arg) => {
@@ -90,7 +105,7 @@ export const datecounter = (arg) => {
             let day_ = timeDiff / dayMs
             let hour_ = (timeDiff % dayMs) / hourMs
             // result = `${day_.toFixed()}天${hour_.toFixed()}小时前`
-            result_ = { type: 3, day: day_, hour: hour_ }
+            result_ = { type: 3, day: day_.toFixed(), hour: hour_.toFixed() }
         } else {
             if (timeDiff / hourMs < 1) {    // minutes ago
                 let minute_ = Math.ceil(timeDiff / minuteMs)
@@ -100,7 +115,7 @@ export const datecounter = (arg) => {
                 let minute_ = (timeDiff % hourMs) / minuteMs
                 let hour_ = (timeDiff / hourMs).toFixed()
                 // result = `${hour_}小时 ${minute_.toFixed()}分钟前`
-                result_ = { type: 1, hour: hour_, minute: minute_ }
+                result_ = { type: 1, hour: hour_, minute: minute_.toFixed()}
             }
         }
     }
