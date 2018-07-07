@@ -39,32 +39,28 @@ const i18n = (arg) => {
             minutesAgo_: ['minute ago', 'minutes ago'],
         }
     }[lang]
-    let result = '', zh = '', en = ''
+    let zh = '', en = ''
     if (type === 4) {
         const { year, month, date, hour, minute } = arg
         const { year_, month_, date_ } = language
-        result = (year ? year + year_ : '') + month + month_ + date + date_ + hour + ':' + minute
         zh = (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
             en = `${month_[month - 1]} ${date}, ${year ? year + ' ' : ''}${hour}:${formatMinute(minute)}`
     }
     if (type === 3) {
         const { day, hour } = arg
         const { days_, hoursAgo_ } = language
-        result = day + days_ + hour + hoursAgo_
         zh = day + days_ + hour + hoursAgo_,
             en = `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`
     }
     if (type === 2) {
         const { minute } = arg
         const { minutesAgo_ } = language
-        result = minute + minutesAgo_
         zh = minute + minutesAgo_,
             en = `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
     }
     if (type === 1) {
         const { hour, minute } = arg
         const { hours_, minutesAgo_ } = language
-        result = hour + hours_ + minute + minutesAgo_
         zh = hour + hours_ + minute + minutesAgo_,
             en = `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
     }
@@ -76,7 +72,6 @@ const i18n = (arg) => {
             break;
         default: return zh
     }
-    // return result
 }
 
 const datecounter = (arg) => {
@@ -92,7 +87,6 @@ const datecounter = (arg) => {
     let hour = time.getHours()
     let minute = time.getMinutes()
     // let second = time.getSeconds()
-    // let result = (year ? year + '年' : '') + month + '月' + date + '日 ' + hour + ':' + minute
     let result_ = { type: 4, year: year, month: month, date: date, hour: hour, minute: minute }
     /* + ':' + second */
 
@@ -104,22 +98,18 @@ const datecounter = (arg) => {
         if (timeDiff / dayMs > 1) {     // days ago
             let day_ = timeDiff / dayMs
             let hour_ = (timeDiff % dayMs) / hourMs
-            // result = `${day_.toFixed()}天${hour_.toFixed()}小时前`
             result_ = { type: 3, day: day_.toFixed(), hour: hour_.toFixed() }
         } else {
             if (timeDiff / hourMs < 1) {    // minutes ago
                 let minute_ = Math.ceil(timeDiff / minuteMs)
-                // result = `${minute_}分钟前`
                 result_ = { type: 2, minute: minute_ }
             } else {                        // hours ago
                 let minute_ = (timeDiff % hourMs) / minuteMs
                 let hour_ = (timeDiff / hourMs).toFixed()
-                // result = `${hour_}小时 ${minute_.toFixed()}分钟前`
-                result_ = { type: 1, hour: hour_, minute: minute_.toFixed()}
+                result_ = { type: 1, hour: hour_, minute: minute_.toFixed() }
             }
         }
     }
-    // return result
     result_.lang = i18n_ ? i18n_ : 'zh'
     return i18n(result_)
 }

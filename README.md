@@ -1,9 +1,11 @@
+[中文](https://github.com/hjdtl/dateCounter/blob/master/README.zh.md) | [English](https://github.com/hjdtl/dateCounter)
+
 # datecounter
-Format date for article or news
+Format date for articles, news or comments
 
 ## Usage
 
-### parameter
+### Parameter
 datecounter receive an **object parameter** :
 
 | key | default | describe | required |
@@ -15,7 +17,10 @@ datecounter receive an **object parameter** :
 ```javascript
 import datecounter from 'datecounter'
 
-datecounter({date_: new Date(), countDay_: 7, i18n_: 'en'})
+datecounter({
+    date_: new Date(), 
+    countDay_: 7, 
+    i18n_: 'en'})
 ```
 
 
@@ -29,15 +34,15 @@ var january = now - (180 * 24 * 60 * 60 * 1000)
 var aYearsAgo = now - (365 * 24 * 60 * 60 * 1000)
 
 /************************* Default usage *************************/
-datecounter({date_: now})         // return : 0分钟之前 (0 minutes ago)
-datecounter({date_: fiveDaysAgo}) // return : 5天0小时前 (5 days 0 hours ago)
-datecounter({date_: january})     // return : 1月6日 9:20 (January 6, 9:20)
-datecounter({date_: aYearsAgo})   // return : 2017年7月5日 9:20 (July 5, 2017 9:20)
+datecounter({date_: now})         // return : 0 minutes ago
+datecounter({date_: fiveDaysAgo}) // return : 5 days 0 hours ago
+datecounter({date_: january})     // return : January 6, 9:20
+datecounter({date_: aYearsAgo})   // return : July 5, 2017 9:20
 
 /************************* Countdown days *************************/
 var countdown = 10
-datecounter({date_: eightDaysAgo, countDay_: countdown}) // return : 8天0小时之前 (8 days 0 hours ago)
-datecounter({date_: eightDaysAgo}) // return : 6月27日 9:20 (June 27, 9:20)
+datecounter({date_: eightDaysAgo, countDay_: countdown}) // return : 8 days 0 hours ago
+datecounter({date_: eightDaysAgo}) // return : June 27, 9:20
 
 /************************* i18n *************************/
 /* langList = ['zh', 'en', 'jp', 'ru', 'kr', 'fr', 'vi'] */
