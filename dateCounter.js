@@ -37,6 +37,15 @@ const i18n = (arg) => {
             hours_: ['hour', 'hours'],
             hoursAgo_: ['hour ago', 'hours ago'],
             minutesAgo_: ['minute ago', 'minutes ago'],
+        },
+        jp: {
+            year_: '年',
+            month_: '月',
+            date_: '日 ',
+            days_: '日',        // 5天前 5日前
+            hours_: '時間',
+            hoursAgo_: '時間前',
+            minutesAgo_: '分前'
         }
     }[lang]
     let zh = '', en = ''
@@ -44,31 +53,37 @@ const i18n = (arg) => {
         const { year, month, date, hour, minute } = arg
         const { year_, month_, date_ } = language
         zh = (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
-            en = `${month_[month - 1]} ${date}, ${year ? year + ' ' : ''}${hour}:${formatMinute(minute)}`
+            en = `${month_[month - 1]} ${date}, ${year ? year + ' ' : ''}${hour}:${formatMinute(minute)}`,
+            jp = (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute)
     }
     if (type === 3) {
         const { day, hour } = arg
         const { days_, hoursAgo_ } = language
         zh = day + days_ + hour + hoursAgo_,
-            en = `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`
+            en = `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`,
+            jp = day + days_ + hour + hoursAgo_
     }
     if (type === 2) {
         const { minute } = arg
         const { minutesAgo_ } = language
         zh = minute + minutesAgo_,
-            en = `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
+            en = `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`,
+            jp = minute + minutesAgo_
     }
     if (type === 1) {
         const { hour, minute } = arg
         const { hours_, minutesAgo_ } = language
         zh = hour + hours_ + minute + minutesAgo_,
-            en = `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
+            en = `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`,
+            jp = hour + hours_ + minute + minutesAgo_
     }
 
     switch (lang) {
         case 'zh': return zh
             break;
         case 'en': return en
+            break;
+        case 'jp': return jp
             break;
         default: return zh
     }

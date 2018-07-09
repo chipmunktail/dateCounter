@@ -46,9 +46,10 @@ datecounter({date_: eightDaysAgo}) // return : June 27, 9:20
 
 /************************* i18n *************************/
 /* langList = ['zh', 'en', 'jp', 'ru', 'kr', 'fr', 'vi'] */
-/* Now noly have ['zh', 'en'] , other language are being developed */
+/* Now noly have ['zh', 'en', 'jp'] , other language are being developed */
 datecounter({date_: fiveDaysAgo, i18n_: 'zh'}) // return : 5天0小时前
 datecounter({date_: fiveDaysAgo, i18n_: 'en'}) // return : 5 days 0 hours ago
+datecounter({date_: fiveDaysAgo, i18n_: 'jp'}) // return : 5天0時間前
 ```
 
 
