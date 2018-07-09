@@ -1,7 +1,7 @@
 {
   "name": "datecounter",
-  "version": "1.0.64",
-  "description": "format date for article or news",
+  "version": "1.0.7",
+  "description": "Format date for articles, news or comments",
   "main": "dateCounter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
