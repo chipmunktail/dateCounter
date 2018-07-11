@@ -1,34 +1,30 @@
 [中文](https://github.com/hjdtl/dateCounter/blob/master/README.zh.md) | [English](https://github.com/hjdtl/dateCounter)
 
-# datecounter
+# Datecounter
 Format date for articles, news or comments
 
 ## Usage
 
 ### Parameter
-datecounter receive an **object parameter** :
+Datecounter receive an **object parameter** , and return a **counter** :
 
 | key | default | describe | required |
 | - | :-: | :- | :-: |
-| date_ | none| Expected is Date Object or timestamp | yes |
-| countDay_ | 7 | Countdown days | no |
-| i18n_ | 'zh' | Language | no |
-| raw_ | none | Raw data | no |
+| date | none| Expected is Date Object or timestamp | yes |
+| countDay | 7 | Countdown days | no |
+| i18n | 'zh' | Language | no |
+| raw | none | Raw data | no |
 
 ```javascript
-import datecounter from 'datecounter'
-
-datecounter({
-    date_: new Date(), 
-    countDay_: 7, 
-    i18n_: 'en'})
+import Datecounter from 'Datecounter'
+const counter=new Datecounter({countDay: 10, i18n: 'en'})
+counter({date: new Date()})
 ```
 
 
 ### Example
 ```javascript
-import datecounter from 'datecounter'
-const counter = datecounter
+import Datecounter from 'Datecounter'
 var now = new Date() // now : Thu Jul 05 2018 09:20:00
 var twoMinutesAgo = now - (2 * 60 * 1000)
 var twoHoursAgo = now - (2 * 60 * 60 * 1000)
@@ -38,33 +34,39 @@ var january = now - (180 * 24 * 60 * 60 * 1000)
 var aYearsAgo = now - (365 * 24 * 60 * 60 * 1000)
 
 /************************* Default usage *************************/
-counter({date_: now})         // return : 0 minutes ago
-counter({date_: fiveDaysAgo}) // return : 5 days 0 hours ago
-counter({date_: january})     // return : January 6, 9:20
-counter({date_: aYearsAgo})   // return : July 5, 2017 9:20
+const counter1=new Datecounter({i18n: 'en'})
+counter1({date: now})           // return : 0 minutes ago
+counter1({date: fiveDaysAgo})   // return : 5 days 0 hours ago
+counter1({date: january})       // return : January 6, 9:20
+counter1({date: aYearsAgo})     // return : July 5, 2017 9:20
 
 /************************* Countdown days *************************/
-var countdown = 10
-counter({date_: eightDaysAgo, countDay_: countdown}) // return : 8 days 0 hours ago
-counter({date_: eightDaysAgo})                       // return : June 27, 9:20
+const counter2=new Datecounter({countDay: 10, i18n: 'en'})
+const counter3=new Datecounter({countDay: 7, i18n: 'en'})
+counter2({date: eightDaysAgo})  // return : 8 days 0 hours ago
+counter3({date: eightDaysAgo})  // return : June 27, 9:20
 
 /************************* i18n *************************/
 /* langList = ['zh', 'en', 'jp', 'ru', 'kr', 'fr', 'vi'] */
 /* Now noly have ['zh', 'en', 'jp'] , other language are being developed */
-counter({date_: fiveDaysAgo, i18n_: 'zh'}) // return : 5天0小时前
-counter({date_: fiveDaysAgo, i18n_: 'en'}) // return : 5 days 0 hours ago
-counter({date_: fiveDaysAgo, i18n_: 'jp'}) // return : 5天0時間前
+const counter_zh=new Datecounter({i18n: 'zh'})
+const counter_en=new Datecounter({i18n: 'en'})
+const counter_jp=new Datecounter({i18n: 'jp'})
+counter_zh({date: fiveDaysAgo}) // return : 5天0小时前
+counter_en({date: fiveDaysAgo}) // return : 5 days 0 hours ago
+counter_jp({date: fiveDaysAgo}) // return : 5天0時間前
 ```
 
 ### Get raw data
 ```javascript
 /* If you need raw data */
 /* There are four kinds of data types in all ['history', 'countDown_day', 'countDown_hour', 'countDown_minute'] */
-counter({date_: twoMinutesAgo, raw_: true}) // return : {type: "countDown_minute", minute: 2}
-counter({date_: twoHoursAgo, raw_: true})   // return : {type: "countDown_hour", hour: "2", minute: "0"}
-counter({date_: fiveDaysAgo, raw_: true})   // return : {type: "countDown_day", day: "5", hour: "0"}
-counter({date_: january, raw_: true})       // return : {type: "history", year: null, month: 1, date: 6, hour: 9, minute: 20 }
-counter({date_: aYearsAgo, raw_: true})     // return : {type: "history", year: 2017, month: 7, date: 6, hour: 9, minute: 20 }
+const count_raw=new Datecounter({raw: true})
+count_raw({date: twoMinutesAgo})// return : {type: "countDown_minute", minute: 2}
+count_raw({date: twoHoursAgo})  // return : {type: "countDown_hour", hour: "2", minute: "0"}
+count_raw({date: fiveDaysAgo})  // return : {type: "countDown_day", day: "5", hour: "0"}
+count_raw({date: january})      // return : {type: "history", year: null, month: 1, date: 6, hour: 9, minute: 20 }
+count_raw({date: aYearsAgo})    // return : {type: "history", year: 2017, month: 7, date: 6, hour: 9, minute: 20 }
 ```
 
 
