@@ -34,15 +34,15 @@ var january = now - (180 * 24 * 60 * 60 * 1000)
 var aYearsAgo = now - (365 * 24 * 60 * 60 * 1000)
 
 /************************* 默认用法 *************************/
-const counter1=new Datecounter({i18n: 'en'})
+const counter1=new Datecounter()
 counter1({date: now})           // return : 0分钟前 
 counter1({date: fiveDaysAgo})   // return : 5天0小时前
 counter1({date: january})       // return : 1月6日 9:20
 counter1({date: aYearsAgo})     // return : 2017年7月5日 9:20
 
 /************************* 使用倒计天数 *************************/
-const counter2=new Datecounter({countDay: 10, i18n: 'en'})
-const counter3=new Datecounter({countDay: 7, i18n: 'en'})
+const counter2=new Datecounter({countDay: 10})
+const counter3=new Datecounter({countDay: 7})
 counter2({date: eightDaysAgo})  // return : 8天0小时前
 counter3({date: eightDaysAgo})  // return : 6月27日 9:20
 
