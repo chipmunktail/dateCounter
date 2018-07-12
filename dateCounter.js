@@ -86,10 +86,13 @@ const toI18n = (arg) => {
 }
 
 function Datecounter(arg) {
+    if (!(arg instanceof Object)) {
+        arg = {countDay:7,i18n:'zh'}
+    }
     const { countDay, i18n, raw } = arg
     const countDay_ = countDay ? countDay : 7
     const i18n_ = i18n ? i18n : 'zh'
-    const raw_ = raw ? true : false
+    const raw_ = Boolean(raw)
     return date_ => {
         const now = Date.now() // Current timestamp
         const type = ['history', 'countDown_day', 'countDown_hour', 'countDown_minute']
