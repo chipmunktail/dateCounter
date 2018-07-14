@@ -1,20 +1,6 @@
 const formatMinute = minute => {
     return minute < 10 ? ('0' + minute) : minute
 }
-function template() {
-    const zh = {
-        t1: (year ? year + year_ : '') + month + month_ + date + date_ + ' ' + hour + ':' + formatMinute(minute),
-        t2: day + days_ + hour + hoursAgo_,
-        t3: minute + minutesAgo_,
-        t4: hour + hours_ + minute + minutesAgo_,
-    }
-    const en = {
-        t1: `${month_} ${date}, ${year ? year : ''} ${hour}:${formatMinute(minute)}`,
-        t2: `${day} ${day === 1 ? days_[0] : days_[1]} ${hour} ${hour === 1 ? hoursAgo_[0] : hoursAgo_[1]}`,
-        t3: `${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`,
-        t4: `${hour} ${hour === 1 ? hours_[0] : hours_[1]} ${minute} ${minute === 1 ? minutesAgo_[0] : minutesAgo_[1]}`
-    }
-}
 const toI18n = (arg) => {
     const { type, lang } = arg
     // const langList = ['zh', 'en', 'jp', 'ru', 'kr', 'fr', 'vi']
