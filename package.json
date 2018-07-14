@@ -1,6 +1,6 @@
 {
   "name": "datecounter",
-  "version": "1.0.83",
+  "version": "1.0.84",
   "description": "Format date for articles, news or comments",
   "main": "dateCounter.js",
   "scripts": {
