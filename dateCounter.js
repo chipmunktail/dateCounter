@@ -21,7 +21,7 @@ const toI18n = (arg) => {
             days_: ['day', 'days'],
             hours_: ['hour', 'hours'],
             hoursAgo_: ['hour ago', 'hours ago'],
-            minutesAgo_: ['minute ago', 'minutes ago'],
+            minutesAgo_: ['minute ago', 'minutes ago']
         },
         jp: {
             year_: '年',
