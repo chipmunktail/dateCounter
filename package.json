@@ -1,6 +1,6 @@
 {
   "name": "datecounter",
-  "version": "1.0.9",
+  "version": "1.0.91",
   "description": "A tool class library that changes the time format,format date for articles, news or comments",
   "main": "dateCounter.js",
   "scripts": {
@@ -11,11 +11,11 @@
     "url": "git+https://github.com/hjdtl/dateCounter.git"
   },
   "keywords": [
+    "vue",
     "format",
     "date",
     "time",
     "timestamp",
-    "vue",
     "article",
     "news",
     "tool"

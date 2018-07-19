@@ -36,7 +36,7 @@ Vue.use(vDatecounter, {countDay: 10, i18n: 'en'})
 this.$datecounter(new Date())
 /************************* 局部方法 *************************/
 const counter=new this.$Datecounter({countDay: 10, i18n: 'en'})
-counter(new Date)
+counter(new Date())
 ```
 
 
