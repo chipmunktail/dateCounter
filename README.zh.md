@@ -1,6 +1,8 @@
 [中文](https://github.com/hjdtl/dateCounter/blob/master/README.zh.md) | [English](https://github.com/hjdtl/dateCounter)
 
 # Datecounter
+一个改变时间格式的工具类库
+
 为文章，新闻或评论增加格式化的时间
 
 ## 使用
@@ -15,10 +17,26 @@ datecounter 接收一个 **对象参数** , 返回一个 **counter** :
 | i18n | 'zh' | 语言 | 否 |
 | raw | none | 原始数据 | 否 |
 
+
+### 基础
 ```javascript
 import Datecounter from 'Datecounter'
 const counter=new Datecounter({countDay: 10, i18n: 'en'})
 counter(new Date())
+```
+
+### Vue
+```javascript
+// 结合Vue使用
+import Vue from 'vue'
+import {vDatecounter} from 'Datecounter'
+Vue.use(vDatecounter, {countDay: 10, i18n: 'en'})
+
+/************************* 全局方法 *************************/
+this.$datecounter(new Date())
+/************************* 局部方法 *************************/
+const counter=new this.$Datecounter({countDay: 10, i18n: 'en'})
+counter(new Date)
 ```
 
 

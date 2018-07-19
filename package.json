@@ -1,7 +1,7 @@
 {
   "name": "datecounter",
-  "version": "1.0.841",
-  "description": "Format date for articles, news or comments",
+  "version": "1.0.9",
+  "description": "A tool class library that changes the time format,format date for articles, news or comments",
   "main": "dateCounter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,8 +15,10 @@
     "date",
     "time",
     "timestamp",
+    "vue",
     "article",
-    "news"
+    "news",
+    "tool"
   ],
   "author": "hjdtl",
   "license": "ISC",

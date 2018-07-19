@@ -119,3 +119,11 @@ function Datecounter(arg) {
     }
 }
 export default Datecounter
+
+const vDatecounter = {
+  install (Vue, arg) {
+    Vue.prototype.$datecounter = new Datecounter(arg)
+    Vue.prototype.$Datecounter = Datecounter
+  }
+}
+export {vDatecounter}

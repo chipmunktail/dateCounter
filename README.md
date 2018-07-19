@@ -1,6 +1,8 @@
 [中文](https://github.com/hjdtl/dateCounter/blob/master/README.zh.md) | [English](https://github.com/hjdtl/dateCounter)
 
 # Datecounter
+A tool class library that changes the time format
+
 Format date for articles, news or comments
 
 ## Usage
@@ -15,12 +17,27 @@ Datecounter receive an **object parameter** , and return a **counter** :
 | i18n | 'zh' | Language | no |
 | raw | none | Raw data | no |
 
+
+### Essentials
 ```javascript
 import Datecounter from 'Datecounter'
 const counter=new Datecounter({countDay: 10, i18n: 'en'})
 counter(new Date())
 ```
 
+### Vue
+```javascript
+// for Vue
+import Vue from 'vue'
+import {vDatecounter} from 'Datecounter'
+Vue.use(vDatecounter, {countDay: 10, i18n: 'en'})
+
+/************************* Global method *************************/
+this.$datecounter(new Date())
+/************************* Local method *************************/
+const counter=new this.$Datecounter({countDay: 10, i18n: 'en'})
+counter(new Date)
+```
 
 ### Example
 ```javascript
