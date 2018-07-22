@@ -10,12 +10,12 @@ Format date for articles, news or comments
 ### Parameter
 Datecounter receive an **object parameter** , and return a **counter** :
 
-| key | default | describe | required |
+| key | default/type | describe | required |
 | - | :-: | :- | :-: |
-| date | none| Expected is Date Object or timestamp | yes |
-| countDay | 7 | Countdown days | no |
-| i18n | 'zh' | Language | no |
-| raw | none | Raw data | no |
+| date | none/Date| Expected is Date Object or timestamp | yes |
+| countDay | 7/number | Countdown days | no |
+| i18n | 'zh'/string | Language | no |
+| raw | none/boolean | Raw data | no |
 
 
 ### Essentials

@@ -10,12 +10,12 @@
 ### 参数
 datecounter 接收一个 **对象参数** , 返回一个 **counter** :
 
-| 参数 | 默认 | 描述 | 必须 |
+| 参数 | 默认/类型 | 描述 | 必须 |
 | - | :-: | :- | :-: |
-| date | none| 接收时间对象或时间戳 | 是 |
-| countDay | 7 | 倒计天数 | 否 |
-| i18n | 'zh' | 语言 | 否 |
-| raw | none | 原始数据 | 否 |
+| date | none/Date| 接收时间对象或时间戳 | 是 |
+| countDay | 7/number | 倒计天数 | 否 |
+| i18n | 'zh'/string | 语言 | 否 |
+| raw | none/boolean | 原始数据 | 否 |
 
 
 ### 基础
